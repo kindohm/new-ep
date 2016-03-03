@@ -2,5 +2,25 @@ bps (200/120)
 
 -- ML 007
 m $ slow 2 $ stut' 1 (0.0625) (|+| note "-12") $ rev $ (|+| note "55") $ mel phryg 16 ( foldEvery [3] (density ((4/3))) $ "0*4")
+m silence
 
-d1 $ sound (samples "jung1*2 [jung2 jung4] jung3*2 jung5*2" (every 2 (0.25 <~) $ run 20)) |+| cut "1" |+| unit "c" |+| speed "8"
+d1 $ whenmod 17 15 (iter 4) $
+every 5 (gap 4) $
+every 6 (chop 4) $
+every 7 (|+| coarse "16 24 32") $
+every 9 (|+| accelerate "-0.5 0.5") $
+every 10 (rip 0.25 0.25) $
+every 11 (rip' 0 1 8 0.25 0.5) $
+every 12 (striate 4 . slow 4) $
+foldEvery [3,4] (0.25 <~) $
+whenmod 10 8 (const $ sound "{brkh1 ch:8*2 b}%8" |+| cut "3") $
+stack [
+sound "ride*2" |+| gain "0.8",
+every 4 (const $ sound (samples "ion2*4 brk2*4" (run 20)) |+| unit "c" |+| speed "8") $
+sound (samples "jung1*2 [jung6 jung4] jung3*2 jung5*2" (every 2 (0.25 <~) $ run 20)) |+| cut "1" |+| unit "c" |+| speed "8",
+sound "~ cp",
+slow 2 $ sound (samples "{[funky funky]*2 doru*2? c64*4? teeny1*2?}%4" (run 10)) |+| cut "5" |=| speed "1" |+| unit "c" |+| speed "8",
+sound (samples "{ch*4 ch*4 ch ~ ~ ~ ~}%4" (run 30)) |+| gain "0.8",
+whenmod 4 2 (const $ sound "~") $ sound "k:9(3,8)" |+| cut "2" |+| gain "0.8" |+| shape "0.5",
+sound "{[~ run:1/4] ~ ~ ~ ~}%4" |+| delay "0.4"  ]
+|+| delaytime "0.4" |+| delayfeedback "0.4" |+| shape "0.2"

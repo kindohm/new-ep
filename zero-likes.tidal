@@ -1,13 +1,13 @@
 bps (200/120)
 
--- m 2.1
+-- preset ???
 m $ slow 8 $ whenmod 16 8 (|+| note "-5") $
 stack [(|+| note (choose[0,12,0,-12,-24])) $ shift' 71 $ chooseMidi "45" mpent "{0 ~ ~ ~ ~}%4"
 |+| dur (scale 1 2 $ shift' 2 $ rand),
 (|+| note (choose[0,12,0,-12,-24])) $ shift' 7 $ chooseMidi "57" mpent "{0 ~ ~}%8"
 |+| dur (scale 1 2 $ shift' 3 $  rand)]
 
-k7 $ density 1 $ whenmod 16 8 (|+| note "-5") $ (|+| note (choose[0,12,0])) $ shift' 81 $
+e $ density 1 $ whenmod 16 8 (|+| note "-5") $ (|+| note (choose[0,12,0])) $ shift' 81 $
 degrade $ shift' 82 $ chooseMidi "45" mpent "0"
 |+| dur (scale 0.4 0.5 $ shift' 14 $ rand)
 |+| modwheel (shift' 13 $ rand)
@@ -19,7 +19,7 @@ chooseMidi "57" mpent "{0*4 0*4 ~ ~ ~ ~ ~}%2" |+| dur "0.15"
 
 m silence
 
-k7 silence
+e silence
 
 keys silence
 
